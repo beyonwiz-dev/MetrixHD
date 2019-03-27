@@ -3195,5 +3195,174 @@
 		<panel name="__e-buttons_template1" />
 </screen>
 	<!-- Partnerbox -->
+	<!-- DiseqcTester-->
+		<screen name="DiseqcTesterNimSelection" position="0,0" size="1280,720" title="Reception Settings" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="58,36" foregroundColor="layer-a-title-foreground" size="525,50" valign="bottom" font="global_title;34" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="nimlist" render="Listbox" position="70,100" size="700,520" enableWrapAround="1" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" backgroundColorSelected="layer-a-selection-background" foregroundColorSelected="layer-a-selection-foreground" transparent="1">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+						MultiContentEntryText(pos = (10, 8), size = (680, 30), flags = RT_HALIGN_LEFT, text = 1), # index 1 is the nim name,
+						MultiContentEntryText(pos = (50, 43), size = (640, 80), font = 1, flags = RT_HALIGN_LEFT | RT_VALIGN_CENTER | RT_WRAP, text = 2), # index 2 is a description of the nim settings,
+					],
+				 "fonts": [gFont("Regular",22), gFont("Regular",20)],
+				 "itemHeight": 130
+				}
+			</convert>
+		</widget>
+		<panel name="template1_2layer" />
+		<panel name="_oe-buttons_template1" />
+		<ePixmap position="890,175" size="256,256" zPosition="2" pixmap="MetrixHD/icons/menu_scan_tuner_setup.png" transparent="1" alphatest="blend" />
+	</screen>
+	<screen name="DiseqcTester" position="0,0" size="1280,720" title="DiSEqC Tester" flags="wfNoBorder" backgroundColor="transparent">
+		<eLabel text="DiSEqC Tester" position="58,36" foregroundColor="layer-a-title-foreground" size="525,50" valign="bottom" font="global_title;34" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="Frontend" render="Label" position="120,90" size="600,30" zPosition="2" font="SetrixHD;21" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" halign="center" transparent="1">
+			<convert type="FrontendInfo">SNRdB</convert>
+		</widget>
+		<eLabel name="snr" text="SNR:" position="120,120" size=" 80,25" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="Frontend" render="Progress" position="210,125" size="420,20" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="2" transparent="1" >
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<widget source="Frontend" render="Label" position="640,120" size=" 80,25" font="SetrixHD;21" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1">
+			<convert type="FrontendInfo">SNR</convert>
+		</widget>
+		<eLabel name="agc" text="AGC:" position="120,150" size=" 80,25" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="Frontend" render="Progress" position="210,155" size="420,20" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="2" transparent="1" >
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<widget source="Frontend" render="Label" position="640,150" size=" 80,25" font="SetrixHD;21" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1">
+			<convert type="FrontendInfo">AGC</convert>
+		</widget>
+		<eLabel name="ber" text="BER:" position="120,180" size=" 80,25" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="Frontend" render="Progress" position="210,185" size="420,20" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="2" transparent="1" >
+			<convert type="FrontendInfo">BER</convert>
+		</widget>
+		<widget source="Frontend" render="Label" position="640,180" size=" 80,25" font="SetrixHD;21" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1">
+			<convert type="FrontendInfo">BER</convert>
+		</widget>
+		<eLabel name="lock" text="Lock:" position="120,219" size=" 80,30" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="Frontend" render="Pixmap" position="210,220" size=" 32,32" zPosition="1" pixmap="skin_default/icons/lock_on.png" alphatest="blend">
+			<convert type="FrontendInfo">LOCK</convert>
+			<convert type="ConditionalShowHide" />
+		</widget>
+		<widget source="Frontend" render="Pixmap" position="210,220" size=" 32,32" zPosition="1" pixmap="skin_default/icons/lock_off.png" alphatest="blend">
+			<convert type="FrontendInfo">LOCK</convert>
+			<convert type="ConditionalShowHide">Invert</convert>
+		</widget>
+		<eLabel position="70,260" size="700,1" zPosition="1" backgroundColor="layer-a-accent1" />
+		<widget source="progress_list" render="Listbox" position="80,270" size="680,130" enableWrapAround="1" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" backgroundColorSelected="layer-a-selection-background" foregroundColorSelected="layer-a-selection-foreground" transparent="1">
+			<convert type="TemplatedMultiContent">
+				{"template": [
+						MultiContentEntryText(pos = (10, 0), size = (510, 28), flags = RT_HALIGN_LEFT, text = 1), # index 1 is the index name,
+						MultiContentEntryText(pos = (515, 0), size = (150, 28), flags = RT_HALIGN_RIGHT, text = 2) # index 2 is the status,
+					],
+				 "fonts": [gFont("Regular", 20)],
+				 "itemHeight": 30
+				}
+			</convert>
+		</widget>
+		<eLabel position="70,400" size="700,1" zPosition="1" backgroundColor="layer-a-accent1" />
+		<widget name="Overall_progress" position="60,413" size="160,28" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="overall_progress" render="Progress" position="230,420" size="420,20" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="2" transparent="1" />
+		<widget name="Progress" position="60,458" size="160,28" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="sub_progress" render="Progress" position="230,465" size="420,20" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="2" transparent="1" />
+		<widget name="Failed" position="60,495" size="160,28" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="failed_counter" render="Label" position="230,495" size="160,28" font="SetrixHD;21" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget name="Succeeded" position="60,525" size="160,28" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="succeeded_counter" render="Label" position="230,525" size="100,28" font="SetrixHD;21" halign="lrft" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget name="With_errors" position="60,555" size="160,28" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="witherrors_counter" render="Label" position="230,555" size="100,28" font="SetrixHD;21" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget name="Not_tested" position="60,585" size="160,28" font="SetrixHD;21" halign="right" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="untestable_counter" render="Label" position="230,585" size="100,28" font="SetrixHD;21" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="CmdText" render="Label" position="810,415" size="415,190" font="screen_info; 20" foregroundColor="layer-b-foreground" halign="center" backgroundColor="layer-b-background" valign="center" transparent="1"/>
+		<ePixmap pixmap="MetrixHD/icons/menu_scan_satfinder.png" position="890,175" size="256,256" zPosition="4" alphatest="blend" />
+		<panel name="template1_2layer" />
+		<panel name="_oe-buttons_template1" />
+	</screen>
+	<!-- DiseqcTester-->
+	<!-- SecParameterSetup-->
+	<screen name="SecParameterSetup" position="0,0" size="1280,720" title="Satellite equipment setup" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="58,36" foregroundColor="layer-a-title-foreground" size="525,50" noWrap="1" valign="bottom" font="global_title;30" backgroundColor="layer-a-background" transparent="1" />
+		<widget name="config" position="70,100" size="700,510" itemHeight="30" font="screen_text; 20" scrollbarSliderBorderWidth="1" scrollbarWidth="10" scrollbarSliderForegroundColor="scrollbarSlidercolor" scrollbarSliderBorderColor="scrollbarSliderbordercolor" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" backgroundColorSelected="layer-a-selection-background" foregroundColorSelected="layer-a-selection-foreground" transparent="1" />
+		<ePixmap pixmap="MetrixHD/icons/menu_scan_satfinder.png" position="890,175" size="256,256" zPosition="4" alphatest="blend" />
+		<panel name="template1_2layer" />
+		<panel name="_oe-buttons_template1" />
+	</screen>
+	<!-- SecParameterSetup-->
+	<!-- Fan Control 2 -->
+	<screen name="FanControl2SpezialSetup" position="0,0" size="1280,720" title="Fan Control 2 - Setup" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="58,36" foregroundColor="layer-a-title-foreground" size="525,50" noWrap="1" valign="bottom" font="global_title;34" backgroundColor="layer-a-background" transparent="1" />
+		<widget name="config" position="70,100" size="700,510" itemHeight="30" font="screen_text; 20" scrollbarSliderBorderWidth="1" scrollbarWidth="10" scrollbarSliderForegroundColor="scrollbarSlidercolor" scrollbarSliderBorderColor="scrollbarSliderbordercolor" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" backgroundColorSelected="layer-a-selection-background" foregroundColorSelected="layer-a-selection-foreground" transparent="1" />
+		<ePixmap pixmap="MetrixHD/icons/fan.png" position="890,175" size="256,256" zPosition="4" alphatest="blend" />
+		<panel name="template1_2layer" />
+		<panel name="_oe-buttons_template1" />
+	</screen>
+	<screen name="FanControl2Plugin" position="0,0" size="1280,720" title="Fan Control 2" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="58,36" foregroundColor="layer-a-title-foreground" size="525,50" noWrap="1" valign="bottom" font="global_title;34" backgroundColor="layer-a-background" transparent="1" />
+		<widget name="config" position="70,100" size="700,270" itemHeight="30" font="screen_text; 20" scrollbarSliderBorderWidth="1" scrollbarWidth="10" scrollbarSliderForegroundColor="scrollbarSlidercolor" scrollbarSliderBorderColor="scrollbarSliderbordercolor" scrollbarMode="showOnDemand" enableWrapAround="1" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" backgroundColorSelected="layer-a-selection-background" foregroundColorSelected="layer-a-selection-foreground" transparent="1" />
+		<eLabel position="70,380" size="700,1" backgroundColor="layer-a-accent1" />
+		<widget source="TxtTemp" render="Label" position="150,420" size="200,30" zPosition="1" font="screen_label;20" halign="right" valign="center" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="TxtZielRPM" render="Label" position="150,450" size="200,30" zPosition="1" font="screen_label;20" halign="right" valign="center" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="TxtRPM" render="Label" position="150,480" size="200,30" zPosition="1" font="screen_label;20" halign="right" valign="center" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="TxtVLT" render="Label" position="150,510" size="200,30" zPosition="1" font="screen_label;20" halign="right" valign="center" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="TxtPWM" render="Label" position="150,540" size="200,30" zPosition="1" font="screen_label;20" halign="right" valign="center" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="PixTemp" render="Progress" position="370,430" size="300,10" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="PixZielRPM" render="Progress" position="370,460" size="300,10" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="PixRPM" render="Progress" position="370,490" size="300,10" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="PixVLT" render="Progress" position="370,520" size="300,10" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="PixPWM" render="Progress" position="370,550" size="300,10" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="TxtERR" render="Label" position="150,570" size="200,30" zPosition="1" font="screen_label;20" halign="right" valign="center" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="PixERR" render="Progress" position="370,580" size="300,10" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="T10ERR" render="Label" position="700,570" size="70,30" zPosition="1" font="screen_label;20" halign="left" valign="center" foregroundColor="layer-a-foreground" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="introduction" render="Label" position="810,385" size="415,220" font="screen_info; 20" foregroundColor="layer-b-foreground" halign="center" backgroundColor="layer-b-background" valign="center" transparent="1"/>
+		<widget source="Version" render="Label"  position="692,65" size="540,30" zPosition="1" font="screen_info;16" halign="right" valign="top" backgroundColor="layer-b-background" transparent="1" />
+		<widget source="red" render="Label" position="70,638" size="170,30" noWrap="1" zPosition="1" valign="center" font="global_button; 20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-button-foreground" transparent="1" />
+		<widget source="green" render="Label" position="253,638" size="170,30" noWrap="1" zPosition="1" valign="center" font="global_button; 20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-button-foreground" transparent="1" />
+		<widget source="yellow" render="Label" position="436,638" size="170,30" noWrap="1" zPosition="1" valign="center" font="global_button; 20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-button-foreground" transparent="1" />
+		<widget source="blue" render="Label" position="619,638" size="170,30" noWrap="1" zPosition="1" valign="center" font="global_button; 20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-button-foreground" transparent="1" />
+		<panel name="template1_2layer" />
+		<panel name="rgyb-buttons_template1" />
+		<panel name="moe-buttons_template1" />
+		<ePixmap pixmap="MetrixHD/icons/fan.png" position="890,175" size="256,256" zPosition="4" alphatest="blend" />
+	</screen>
+	<screen name="FanControl2Test" position="0,0" size="1280,720" title="Fan Control 2 - Test" flags="wfNoBorder" backgroundColor="transparent">
+		<widget source="Title" render="Label" position="58,36" foregroundColor="layer-a-title-foreground" size="525,50" noWrap="1" valign="bottom" font="global_title;34" backgroundColor="layer-a-background" transparent="1" />
+		<widget source="TextTest1" render="Label" position="70,100" size="700,30" zPosition="10" font="screen_text;20" halign="left" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TextTest2" render="Label" position="70,130" size="700,30" zPosition="10" font="screen_text;20" halign="left" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TextTest3" render="Label" position="70,160" size="700,30" zPosition="10" font="screen_text;20" halign="left" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TextTest4" render="Label" position="70,190" size="700,30" zPosition="10" font="screen_text;20" halign="left" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TextTest5" render="Label" position="70,220" size="700,30" zPosition="10" font="screen_text;20" halign="left" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TextTest6" render="Label" position="70,250" size="700,30" zPosition="10" font="screen_text;20" halign="left" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TextTest7" render="Label" position="70,280" size="700,30" zPosition="10" font="screen_text;20" halign="left" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<ePixmap pixmap="MetrixHD/icons/fan.png" position="890,175" size="256,256" zPosition="4" alphatest="blend" />
+		<panel name="template1_2layer" />
+		<panel name="_oe-buttons_template1" />
+	</screen>
+	<screen name="FanControl2Monitor" position="760,20" size="500,330" title="Fan Control 2 - Monitor" flags="wfNoBorder" backgroundColor="layer-b-background">
+		<eLabel position="1,1" size="498,328" backgroundColor="layer-a-background" />
+		<widget source="TxtTemp0" render="Label" position="20,24" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtTemp1" render="Label" position="20,54" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtTemp2" render="Label" position="20,84" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtTemp3" render="Label" position="20,114" size="200,30" zPosition="1" font="screen_label;20" halign="left"  ackgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtTemp4" render="Label" position="20,144" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtTemp5" render="Label" position="20,174" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtTemp6" render="Label" position="20,204" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtTemp7" render="Label" position="20,234" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtHDD" render="Label" position="20,264" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget source="TxtFan" render="Label" position="20,294" size="200,30" zPosition="1" font="screen_label;20" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-foreground" transparent="1" />
+		<widget name="TxtMinTemp" position="230,5" size="50,20" zPosition="1" font="screen_text;15" halign="left" backgroundColor="layer-a-background" foregroundColor="layer-a-accent1" transparent="1" />
+		<widget source="TxtFC2Temp" render="Label" position="230,5" size="250,20" zPosition="1" font="screen_text;15" halign="center" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-accent1" transparent="1" />
+		<widget name="TxtMaxTemp" position="430,5" size="50,20" zPosition="1" font="screen_text;15" halign="right" valign="center" backgroundColor="layer-a-background" foregroundColor="layer-a-accent1" transparent="1" />
+		<widget source="ProTemp0" render="Progress" position="230,30" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProTemp1" render="Progress" position="230,60" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProTemp2" render="Progress" position="230,90" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProTemp3" render="Progress" position="230,120" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProTemp4" render="Progress" position="230,150" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProTemp5" render="Progress" position="230,180" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProTemp6" render="Progress" position="230,210" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProTemp7" render="Progress" position="230,240" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProHDD" render="Progress" position="230,270" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+		<widget source="ProFan" render="Progress" position="230,300" size="250,10" zPosition="1" borderColor="layer-a-accent1" foregroundColor="layer-a-progress" borderWidth="1" transparent="1" />
+	</screen>
+	<!-- Fan Control 2 -->
 <!-- PLUGINS */-->
 </skin>
