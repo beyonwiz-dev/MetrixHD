@@ -447,8 +447,15 @@ def initColorsConfig():
 	config.plugins.MyMetrixLiteColors.scrollbarSliderbordercolor = ConfigSelection(default="27408B", choices = ColorList)
 	config.plugins.MyMetrixLiteColors.scrollbarSliderbordertransparency = ConfigSelection(default="00", choices = TransparencyList)
 
-	gradientcolor = [('0', _('disabled')), ('1', _('same as background')), ('25', _('%s darker than background')%'25%') , ('50',  _('%s darker than background')%'50%'), ('75',  _('%s darker than background')%'75%')] + ColorList
-	config.plugins.MyMetrixLiteColors.cologradient = ConfigSelection(default='0', choices = gradientcolor)
+	config.plugins.MyMetrixLiteColors.cologradient = ConfigSelection(default='0', choices = [('0', _('disabled'))] + ColorList)
+	config.plugins.MyMetrixLiteColors.cologradient_show_background = ConfigYesNo(default=True)
+	choicelist = []
+	for x in range(0,105,5):
+		choicelist.append(('%d' %x, '%d%s' %(x,'%')))
+	config.plugins.MyMetrixLiteColors.cologradient_size = ConfigSelection(default='25', choices = choicelist)
+	config.plugins.MyMetrixLiteColors.cologradient_position = ConfigSelection(default='25', choices = choicelist)
+	config.plugins.MyMetrixLiteColors.cologradient_transparencyA = ConfigSelection(default='1A', choices = TransparencyList)
+	config.plugins.MyMetrixLiteColors.cologradient_transparencyB = ConfigSelection(default='FF', choices = TransparencyList)
 
 #############################################################
 
@@ -705,7 +712,7 @@ def initOtherConfig():
 	config.plugins.MyMetrixLiteOther.showExtended_protocol = ConfigYesNo(default=False)
 	config.plugins.MyMetrixLiteOther.showExtended_hops = ConfigYesNo(default=True)
 	config.plugins.MyMetrixLiteOther.showExtended_ecmtime = ConfigYesNo(default=True)
-	
+
 	config.plugins.MyMetrixLiteOther.ExtendedinfoStyle = ConfigSelection(default = "1", choices = [("1", _("Top of the screen")), ("2", _("Between Clock and Weather enclosed")), ("3", _("Between Clock and Weather centered")), ("4", _("Bottom of the screen"))])
 	config.plugins.MyMetrixLiteOther.showSnr = ConfigYesNo(default=True)
 	config.plugins.MyMetrixLiteOther.showRecordstate = ConfigYesNo(default=True)
@@ -716,6 +723,9 @@ def initOtherConfig():
 	config.plugins.MyMetrixLiteOther.setTunerAuto = ConfigYesNo(default=True)
 	config.plugins.MyMetrixLiteOther.setTunerManual = ConfigSelection(default='2', choices=[('1','1'),('2','2'),('3','3'),('4','4'),('5','5'),('6','6'),('7','7'),('8','8'),('10','10'),('12','12'),('16','16'),('18','18'),('19','19')])
 	config.plugins.MyMetrixLiteOther.showInfoBarRunningtext = ConfigYesNo(default=False)
+	#pig
+	config.plugins.MyMetrixLiteOther.movielist_pig = ConfigYesNo(default=False)
+	config.plugins.MyMetrixLiteOther.emc_pig = ConfigYesNo(default=False)
 	#running text parameter
 	config.plugins.MyMetrixLiteOther.runningTextStartdelay = ConfigSelectionNumber(600, 10000, 100, default = 1200, wraparound=True)
 	config.plugins.MyMetrixLiteOther.runningTextSpeed = ConfigSelectionNumber(20, 1000, 10, default = 60, wraparound=True)
@@ -761,7 +771,6 @@ def initOtherConfig():
 	config.plugins.MyMetrixLiteOther.SkinDesignMenuScrollInfo = ConfigYesNo(default=True)
 	config.plugins.MyMetrixLiteOther.SkinDesign = ConfigSelection(default = "1", choices = [("1", _("Standard")), ("2", _("Layer A and B same height, Clock in Layer A")), ("3", _("Layer A and B same height, Clock in Layer B"))])
 	config.plugins.MyMetrixLiteOther.SkinDesignSpace = ConfigYesNo(default=False)
-	config.plugins.MyMetrixLiteOther.SkinDesignInfobarColorGradient = ConfigYesNo(default=False)
 	config.plugins.MyMetrixLiteOther.SkinDesignInfobarPicon = ConfigSelection(default = "1", choices = [("1", _("XPicons")), ("2", _("ZZZPicons"))])
 	config.plugins.MyMetrixLiteOther.SkinDesignInfobarXPiconPosX = ConfigSelectionNumber(-33, 33, 1, default = 0)
 	config.plugins.MyMetrixLiteOther.SkinDesignInfobarXPiconPosY = ConfigSelectionNumber(-14, 14, 1, default = 0)

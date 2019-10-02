@@ -20,7 +20,9 @@
 ###############################################################################
 <!-- cf#_#start -->
 	<!-- MetrixHD v2.5 by iMaxxx | optimized for openATV 4.0 -->
+	<!-- MetrixHD v3.0 by openATV Team  -->
 	<!-- recommended to use with XPicons -->
+	<!-- Explicitly, no one is allowed to use any version of the Skin with other team Images -->
 	<!-- You can modify and redistribute it as long as you keep this license and the original author for the skin and all of your modifications -->
 	<output id="0">
 		<resolution xres="1280" yres="720" bpp="32" />
@@ -243,13 +245,13 @@
 	<parameters>
 		<parameter name="AutotimerEnabledIcon" value="5,2,25,25"/>
 		<parameter name="AutotimerRecordIcon" value="32,5,20,20"/>
-		<parameter name="DreamexplorerName" value="40,2,660,25"/>
-		<parameter name="DreamexplorerIcon" value="10,3,22,22"/>
+		<parameter name="DreamexplorerName" value="40,0,660,30"/>
+		<parameter name="DreamexplorerIcon" value="10,4,22,22"/>
 		<parameter name="PluginBrowserName" value="120,2,30"/>
 		<parameter name="PluginBrowserDescr" value="120,24,26"/>
 		<parameter name="PluginBrowserIcon" value="10,5,100,40"/>
 		<parameter name="PluginBrowserDownloadName" value="80,2,30"/>
-		<parameter name="PluginBrowserDownloadDescr" value="80,24,26"/>
+		<parameter name="PluginBrowserDownloadDescr" value="80,24,30"/>
 		<parameter name="PluginBrowserDownloadIcon" value="10,0,60,50"/>
 		<parameter name="ChoicelistDash" value="0,2,700,2"/>
 		<parameter name="ChoicelistName" value="50,4,650,30"/>
@@ -264,16 +266,22 @@
 		<parameter name="HelpMenuListExtHlp0" value="0,0,700,28"/>
 		<parameter name="HelpMenuListExtHlp1" value="0,27,700,23"/>
 		<parameter name="HelpMenuListHlp" value="0,0,700,30"/>
-		<parameter name="SelectionListDescr" value="40,2,660,25"/>
+		<parameter name="SelectionListDescr" value="40,2,660,30"/>
 		<parameter name="SelectionListLock" value="10,2,25,24"/>
 		<parameter name="SelectionListLockOff" value="10,2,25,24"/>
 		<parameter name="PicturePlayerThumb" value="35,190,30,200,20,14"/>
-		<parameter name="PlayListName" value="40,2,660,25"/>
+		<parameter name="PlayListName" value="40,2,660,30"/>
 		<parameter name="PlayListIcon" value="10,7,16,16"/>
 		<parameter name="ServiceInfo" value="0,0,300,30"/>
-		<parameter name="ServiceInfoLeft" value="0,0,300,25"/>
-		<parameter name="ServiceInfoRight" value="300,0,600,25"/>
+		<parameter name="ServiceInfoLeft" value="0,0,300,30"/>
+		<parameter name="ServiceInfoRight" value="300,0,600,30"/>
+		<parameter name="ServiceInfoFont" value="screen_text;20"/>
 		<parameter name="VirtualKeyBoard" value="45,45"/>
+		<parameter name="VirtualKeyBoardAlignment" value="0,0"/>
+		<parameter name="VirtualKeyBoardPadding" value="4,4"/>
+<!-- cf#_#stop -->
+		<parameter name="VirtualKeyBoardShiftColors" value="0x00ffffff,0x00ffffff,0x0000ffff,0x00ff00ff"/>
+<!-- cf#_#start -->
 		<parameter name="PiconManagerList" value="10,0,1120,30"/>
 		<parameter name="PiconManagerListFont" value="screen_text;20"/>
 		<parameter name="ProgrammlistenUpdaterList" value="10,8,480,200,40"/>
@@ -287,8 +295,11 @@
 		<parameter name="EpgListIcon" value="1,10,21,21,1"/>
 <!-- cf#_#rename -->
 		<parameter name="EpgListIcon#_FHDscreen" value="2,12,25,25,2"/>
+<!-- cf#_#rename -->
+		<parameter name="EpgListSingle" value="60,156"/>
+<!-- cf#_#rename -->
+		<parameter name="EpgListSingle#_FHDscreen" value="88,220"/>
 <!-- cf#_#start -->
-		<parameter name="EpgListSingle" value="50,150"/>
 	</parameters>
 <!-- SKINPARTS -->
 	<include filename="/usr/share/enigma2/MetrixHD/skin_00_templates.xml" />
